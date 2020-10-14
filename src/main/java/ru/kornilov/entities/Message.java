@@ -5,9 +5,13 @@ public class Message {
     private String author;
     private String text;
 
-
     public Message(int id, String author, String text) {
         this.id = id;
+        this.author = author;
+        this.text = text;
+    }
+
+    public Message(String author, String text) {
         this.author = author;
         this.text = text;
     }
