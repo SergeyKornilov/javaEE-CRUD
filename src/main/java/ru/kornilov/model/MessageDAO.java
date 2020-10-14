@@ -21,7 +21,7 @@ public class MessageDAO {
     private static final String INSERT_MESSAGE_SQL = "INSERT INTO messages" + " (author, text) VALUES" + " (?, ?);";
     private static final String SELECT_ALL_MESSAGES_SQL = "SELECT * FROM messages";
     private static final String DELETE_MESSAGES_SQL = "DELETE FROM messages WHERE id = ?";
-    private static final String UPDATE_MESSAGE_SQL = "UPDATE users SET author = ?, text = ?  WHERE id = ?";
+    private static final String UPDATE_MESSAGE_SQL = "UPDATE messages SET author = ?, text = ?  WHERE id = ?";
 
     protected Connection getConnection() {
         Connection connection = null;
@@ -50,7 +50,7 @@ public class MessageDAO {
     public List<Message> selectAllMessage() throws SQLException {
         List<Message> messages = new ArrayList<>();
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_MESSAGES_SQL)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_MESSAGES_SQL)) {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -62,8 +62,4 @@ public class MessageDAO {
         }
         return messages;
     }
-
-
-
-
 }
